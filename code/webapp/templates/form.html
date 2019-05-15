@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Boston Airbnb</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT</a>
+    <a href="#host" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOST A HOME</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens  -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">ABOUT</a>
+  <a href="#host" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">HOST A HOME</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="http://cdn.shopify.com/s/files/1/2143/3217/files/ugp-boston-custom-t-shirt-printing_jpg.jpg?4109786587193936907" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,c_fill,g_center,h_1100,w_2000/v1504090383/g5/g5-c-i7yxybw5-mission-rock-single/g5-cl-iap27qrg-mountain-view-apartment-homes/uploads/interior-4.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <!--<h3>Apartment</h3>-->
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://www.bostondesignguide.com/sites/default/files/jan-gleysteen-sanford-custom-builders-bdg20.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="https://i2.wp.com/www.proper.insure/wp-content/uploads/2019/01/Airbnb-Insurance-Massachusettes-Short-Term-Rental-Law-Ordinance.jpg?w=1080&ssl=1" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+</div>
+
+  <!-- The About Us Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about">
+    <h2 class="w3-wide">ABOUT US</h2>
+    <p class="w3-opacity"><i>Earn money as an airbnb host</i></p>
+      <p class="w3-justify">__________________________________________________We are predicting price!!!________________________________________________
+      </p>
+  </div>
+
+
+  <!-- The Form Section-->
+  <div class="w3-black" id="host">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">HOST A HOME</h2>
+      <p class="w3-opacity w3-center"><i>Find out what you could earn</i></p><br>
+
+    <div class="container">
+  <form action=" http://127.0.0.1:5000/result" method="POST" class="needs-validation" novalidate>
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
+    <div class="form-group">
+      <label for="zipcode">Zipcode:</label>
+      <select class="form-control" id="zipcode" placeholder="Select a zipcode" name="zipcode" required>
+        {% for zip in areacode %}
+        <option value="{{zip.zipcode}}">{{zip.zipcode}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="property_type">property Type:</label>
+      <select class="form-control" id="property_type" placeholder="Select a propertyType" name="property_type" required>
+        {% for p in propertytype %}
+        <option value="{{p.propertytype}}">{{p.propertytype}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="accommodates">Accomodates:</label>
+      <select class="form-control" id="accommodates" placeholder="Select number of accomodates" name="accommodates" required>
+        {% for a in accommodates %}
+        <option value="{{a.accommodates}}">{{a.accommodates}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="bedrooms">Bedrooms:</label>
+      <select class="form-control" id="bedrooms" placeholder="Select number of Bedrooms" name="bedrooms" required>
+        {% for b in bedrooms %}
+        <option value="{{b.bedrooms}}">{{b.bedrooms}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="bathrooms">Bathrooms:</label>
+       <select class="form-control" id="bathrooms" placeholder="Select number of Bathroom" name="bathrooms" required>
+        {% for bath in bathrooms %}
+        <option value="{{bath.bathrooms}}">{{bath.bathrooms}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="beds">Beds:</label>
+       <select class="form-control" id="beds" placeholder="Select number of Beds" name="beds" required>
+        {% for bed in beds %}
+        <option value="{{bed.beds}}">{{bed.beds}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="cleaning_fee">Cleaning Fee:</label>
+      <input type="text" class="form-control" id="cleaning_fee" placeholder="Enter cleaning fee" name="cleaning_fee" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please Enter valid input</div>
+    </div>
+
+    <div class="form-group">
+      <label for="minimum_nights">Minimum Nights:</label>
+      <input type="text" class="form-control" id="minimum_nights" placeholder="Enter number of minimum nights" name="minimum_nights" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please Enter valid input</div>
+    </div>
+
+    <div class="form-group">
+      <label for="review_scores_rating">Ratings:</label>
+      <input type="text" class="form-control" id="review_scores_rating" placeholder="Enter Rating score" name="review_scores_rating" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please Enter valid input</div>
+    </div>
+
+    <div class="form-group">
+      <label for="bed_type">Bed Type:</label>
+      <select class="form-control" id="bed_type" placeholder="Select Bed Type" name="bed_type" required>
+        {% for bt in bed_type %}
+        <option value="{{bt.bedtype}}">{{bt.bedtype}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="room_type">Rooom Type:</label>
+      <select class="form-control" id="room_type" placeholder="Select Room Type" name="room_type" required>
+        {% for room in roomtype %}
+        <option value="{{room.roomtype}}">{{room.roomtype}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="neighbourhood_cleansed">Neighbourhood:</label>
+      <select class="form-control" id="neighbourhood_cleansed" placeholder="Select Neighbourhood" name="neighbourhood_cleansed" required>
+        {% for nh in neighbourhood %}
+        <option value="{{nh.neighbourhood}}">{{nh.neighbourhood}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="ammenties_count">Amenities:</label>
+      <input type="text" class="form-control" id="ammenties_count" placeholder="Enter number of amenities" name="ammenties_count" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please Enter valid input</div>
+    </div>
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+    </div>
+  </div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i>Boston, MA<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 11224411<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mailus@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 4000);
+}
+
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
